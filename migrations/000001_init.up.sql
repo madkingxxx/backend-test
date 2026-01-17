@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    balance NUMERIC(10, 2) NOT NULL DEFAULT 0.00
+);
+
+INSERT INTO users (id, balance) VALUES (1, 300.00);
