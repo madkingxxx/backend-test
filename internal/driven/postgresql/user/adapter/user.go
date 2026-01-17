@@ -29,6 +29,8 @@ func (r *Repo) Get(ctx context.Context, id int) (usercore.User, error) {
 
 func (r *Repo) Withdraw(ctx context.Context, id int, amount float64) (usercore.User, error) {
 	var newBalance float64
+	// i might had to use transaction here, i might not know if user exists or not, i mean cant return the corresponding error
+	// if user not exists, i return insufficient funds(
 	err := r.pool.QueryRow(ctx, withdrawUserBalanceQuery, amount, id).Scan(&newBalance)
 	if err != nil {
 		if errors.Is(err, pgx.ErrNoRows) {
