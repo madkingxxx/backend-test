@@ -7,6 +7,7 @@ import (
 	usercore "github.com/madkingxxx/backend-test/internal/core/user"
 )
 
+//go:generate mockgen -source=usecase.go -destination=./usecase_mock.go -package=user
 type userServiceI interface {
 	Get(ctx context.Context, id int) (usercore.User, error)
 	Withdraw(ctx context.Context, id int, amount float64) (usercore.User, error)
