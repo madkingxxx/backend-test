@@ -145,6 +145,7 @@ make build
 
 ### Caching Strategy
 Items are cached in-memory and updated via a cron job every minute. This avoids hitting the Skinport API rate limits (8 requests/5 mins) while keeping data relatively fresh.
+At first wanted to use TTL for evicting old items, but then realized that replacing the whole map is better.
 
 ### Balance Operations
 User balance is updated using atomic database operations to ensure consistency.
